@@ -37,11 +37,11 @@ app.use('/api/search', productSearchRoutes);
 // app.use(app.router);
 // routes.initialize(app);
 
-app.get('/', (req,res) => {
-  res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
-})
+// app.get('/', (req,res) => {
+//   res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
+// })
 const port = process.env.PORT || '3030';
-//app.use(express.static('GreenFarm'));
+app.use(express.static('GreenFarm'));
 
 app.listen(port , err => {
   console.log('Magic happens on port awesome ' + port);

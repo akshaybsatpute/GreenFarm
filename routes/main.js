@@ -5,6 +5,8 @@ const Category = require('../models/category');
 const Product = require('../models/product');
 const Review = require('../models/review');
 const Order = require('../models/order');
+const Contact=require('../models/contact');
+const Feedback=require('../models/feedback');
 const checkJWT = require('../middlewares/check-jwt');
 
 router.get('/products', (req, res, next) => {
@@ -63,6 +65,27 @@ router.route('/categories')
     });
   });
 
+  router.route('/contact').post((req, res, next) => {
+    let contact = new Contact();
+    contact.name = req.body.name;
+    contact.email=req.body.email;
+    contact.message=req.body.message;
+    contact.save();
+    res.json({
+      success: true,
+      message: "Successful"
+    });
+  });
+  router.route('/feedback').post((req, res, next) => {
+    let feedback = new Feedback();
+    feedback.rating=req.body.rating;
+    feedback.message=req.body.message;
+    feedback.save();
+    res.json({
+      success: true,
+      message: "Successful"
+    });
+  });
 
   router.get('/categories/:id', (req, res, next) => {
     const perPage = 10;
